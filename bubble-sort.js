@@ -5,23 +5,19 @@ const swap = (arr, xi, xj) => {
 }
 
 const bubbleSort = (arr) => {
-  let sorted = false
+  let sorted = true
 
-  while (!sorted) {
-    sorted = true
-
-    for (let i = 0; i < arr.length - 1; i++) {
-      let next = i + 1
-      if (arr[i] > arr[next]) {
-        sorted = false
-        swap(arr, i, next)
-      }
+  for (let i = 0; i < arr.length - 1; i++) {
+    let next = i + 1
+    if (arr[i] > arr[next]) {
+      swap(arr, i, next)
+      sorted = false
     }
-
-    if (sorted) return arr
   }
 
-  return arr
+  if (sorted) return arr
+
+  return bubbleSort(arr)
 }
 
 const sorted = bubbleSort([5, 1, 4, 2, 8])
